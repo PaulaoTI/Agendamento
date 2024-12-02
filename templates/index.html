@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de agendamento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Agendamento de Palestra</h1>
+    <form id="scheduleForm">
+        <label for="eventName">Tema:</label>
+        <input type="text" id="eventName" name="eventName" placeholder="Digite o tema" required><br><br>
+
+        <label for="eventEmail">E-mail:</label>
+        <input type="email" id="eventEmail" name="eventEmail" placeholder="Digite o e-mail" required><br><br>
+
+        <label for="eventDate">Data:</label>
+        <input type="date" id="eventDate" name="eventDate" required><br><br>
+
+        <label for="eventTime">Hora:</label>
+        <input type="time" id="eventTime" name="eventTime" required><br><br>
+
+        <label for="eventPlataform">Plataforma:</label>
+        <input type="text" id="eventPlataform" name="eventPlataform" placeholder="Digite a plataforma" required><br><br>
+        
+        <button type="submit">Agendar</button>
+    </form>
+    
+    <div id="confirmation" style="margin-top: 20px; font-weight: bold;"></div>
+
+    <script>
+        document.getElementById('scheduleForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const formData = {
+                eventName: document.getElementById('eventName').value,
+                eventEmail: document.getElementById('eventEmail').value,
+                eventDate: document.getElementById('eventDate').value,
+                eventTime: document.getElementById('eventTime').value,
+                eventPlataform: document.getElementById('eventPlataform').value,
+            };
+
+            try {
+                const response = await fetch('/api/schedule', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao agendar o evento. Verifique os dados e tente novamente.');
+                }
+
+                const result = await response.json();
+                document.getElementById('confirmation').innerText = `✅ Evento "${result.eventName}" agendado para ${result.eventDate} às ${result.eventTime}. E-mail de confirmação enviado para: ${result.eventEmail}.`;
+            } catch (error) {
+                console.error('Erro:', error);
+                document.getElementById('confirmation').innerText = '❌ Não foi possível agendar o evento. Tente novamente.';
+            }
+        });
+    </script>
+</body>
+</html>
