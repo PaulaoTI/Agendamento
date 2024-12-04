@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Comprovante de agendamento</title>
+    <style>
+
+        body {
+            background-color: rgb(189, 189, 189);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        div {
+            height: auto;
+            width: 320px;
+            background-color: rgb(73, 73, 73);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.945);
+        }
+        h1{
+            font-size: 19px;
+            color: white;
+        }
+
+        p{
+            font-size: 19px;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            div {
+                width: 90%;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Comprovante de agendamento</h1>
+        <p id="profileTema"></p><br>
+        <p id="profileHora"></p><br>
+        <p id="profileData"></p><br>
+        <p id="profileDescricao"></p><br>
+    </div>
+    <script>
+
+        const tema = localStorage.getItem('tema') || 'Não informado';
+        const hora = localStorage.getItem('hora') || 'Não informado';
+        const data = localStorage.getItem('data') || 'Não informado';
+        const descricao = localStorage.getItem('descricao') || 'Não informado';
+
+        const profileTema = document.getElementById('profileTema');
+        const profileHora = document.getElementById('profileHora');
+        const profileData = document.getElementById('profileData');
+        const profileDescricao = document.getElementById('profileDescricao');
+
+        profileTema.textContent = `Tema: ${tema}`;
+        profileHora.textContent = `Hora: ${hora}`;
+        profileData.textContent = `Data: ${data}`;
+        profileDescricao.textContent = `Descrição: ${descricao}`;
+    </script>
+</body>
+
+</html>
