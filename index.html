@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Tela de agendamento</title>
+</head>
+<body>
+    <div>
+        <h1>Agendamento</h1>
+        <form id="AgendamentoForm">
+            <label>Tema</label>
+            <input type="text" id="tema" name="tema" placeholder="Digite o tema" required>
+            <label>Hora</label>
+            <input type="time" id="hora" name="hora" required>
+            <label>Data</label>
+            <input type="date" id="data" name="data" required>
+            <label>Descrição</label>
+            <textarea id="descricao" name="descricao" placeholder="Digite a descrição"></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById('AgendamentoForm');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            alert('Agendamento realizado ✔');
+
+            const tema = document.getElementById('tema').value;
+            const hora = document.getElementById('hora').value;
+            const data = document.getElementById('data').value;
+            const descricao = document.getElementById('descricao').value;
+
+            localStorage.setItem('tema', tema);
+            localStorage.setItem('hora', hora);
+            localStorage.setItem('data', data);
+            localStorage.setItem('descricao', descricao);
+
+            window.location.href = 'comprovanteAgendamento.html';
+        });
+    </script>
+</body>
+</html>
