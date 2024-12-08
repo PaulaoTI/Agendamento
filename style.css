@@ -32,12 +32,14 @@ form label, form input, form textarea {
     margin-bottom: 10px;
     width: 100%;
     color: white;
+    font-size: 20px;
 }
 
 form input, form textarea {
     padding: 8px;
     font-size: 16px;
     border: 1px solid #000000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.829);
     border-radius: 5px;
     outline: none;
     transition: 0.3s;
@@ -45,19 +47,25 @@ form input, form textarea {
     color: rgb(0, 0, 0);
 }
 
-form input:focus, form textarea:focus {
-    border-color: rgb(255, 0, 0);
-}
-
 input::placeholder, textarea::placeholder {
     color: rgb(0, 0, 0);
 }
 
+input:hover::placeholder, textarea:hover::placeholder {
+    color: red;
+}
+
+input:hover, textarea:hover {
+    border: 1px solid red;
+}
+
 form button {
     margin-top: 10px;
-    padding: 10px 20px;
-    background-color: rgb(80, 80, 255);
-    color: white;
+    margin-left: 30px;
+    padding: 10px 70px;
+    background-color: rgb(175, 175, 175);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.89);
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -66,7 +74,9 @@ form button {
 }
 
 form button:hover {
-    background-color: rgb(50, 50, 200);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.89);
+    color: rgb(255, 255, 255);
+    background-color: rgb(66, 66, 66);
 }
 
 textarea {
