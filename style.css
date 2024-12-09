@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(40, 93, 236);
+    background-color: rgb(69, 95, 167);
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -13,7 +13,7 @@ body {
 div {
     height: auto;
     width: 320px;
-    background-color: rgb(156, 156, 156);
+    background-color: rgb(187, 187, 187);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,14 +24,14 @@ div {
 }
 
 h1 {
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 form label, form input, form textarea {
     display: block;
     margin-bottom: 10px;
     width: 100%;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 20px;
 }
 
@@ -43,40 +43,25 @@ form input, form textarea {
     border-radius: 5px;
     outline: none;
     transition: 0.3s;
-    background-color: #cccaca;
+    background-color: #dfdfdf;
     color: rgb(0, 0, 0);
 }
 
 input::placeholder, textarea::placeholder {
-    color: rgb(0, 0, 0);
-}
-
-input:hover::placeholder, textarea:hover::placeholder {
-    color: red;
-}
-
-input:hover, textarea:hover {
-    border: 1px solid red;
+    color: #505050;
 }
 
 form button {
     margin-top: 10px;
     margin-left: 30px;
     padding: 10px 70px;
-    background-color: rgb(175, 175, 175);
+    background-color: rgb(77, 77, 77);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.89);
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    cursor: pointer;
     transition: 0.3s;
-}
-
-form button:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.89);
-    color: rgb(255, 255, 255);
-    background-color: rgb(66, 66, 66);
 }
 
 textarea {
