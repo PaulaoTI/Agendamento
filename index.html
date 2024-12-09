@@ -9,17 +9,15 @@
     <title>Tela de agendamento</title>
     <style>
         .dia {
-            width: 20px;
+            width: 30px;
         }
         .mes {
-            position: absolute;
             top: 352px;
             left: 634px;
-            width: 20px;
+            width: 30px;
         }
         .ano {
             width: 40px;
-            position: absolute;
             top: 352px;
             left: 690px;
         }
@@ -35,9 +33,9 @@
             <label>Hora</label>
             <input type="time" id="hora" name="hora" required>
             <label>Data</label>
-            <input type="text" class="dia" maxlength="2" id="dia" name="dia" required>
-            <input type="text" class="mes" maxlength="2" id="mes" name="mes" required>
-            <input type="text" class="ano" maxlength="4" id="ano" name="ano" required>
+            <input type="text" class="dia" maxlength="2" placeholder="Dia" id="dia" name="dia" required>
+            <input type="text" class="mes" maxlength="2" placeholder="Mes" id="mes" name="mes" required>
+            <input type="text" class="ano" maxlength="4" placeholder="Ano" id="ano" name="ano" required>
             <label>Descrição</label>
             <textarea id="descricao" name="descricao" placeholder="Digite aqui"></textarea>
             <button type="submit">Enviar</button>
