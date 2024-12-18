@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     <title>Comprovante de agendamento</title>
     <style>
         body {
-            background-color: rgb(189, 189, 189);
+            background-color: rgb(69, 95, 167);
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -21,7 +21,7 @@
         .ticket {
             width: 300px;
             height: 500px;
-            background-color: #2156c9;
+            background-color: #ffffff;
             clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px),
                     calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px);
             margin: 50px auto;
@@ -52,14 +52,14 @@
         .ticket h1 {
             font-size: 25px;
             text-align: center;
-            color: white;
+            color: rgb(0, 0, 0);
             padding-top: 50px;
             margin: 0;
         }
 
         .ticket p {
             text-align: center;
-            color: white;
+            color: rgb(0, 0, 0);
             font-size: 18px;
         }
 
@@ -75,26 +75,28 @@
 </head>
 <body>
     <div class="ticket">
-        <h1>Comprovante de agendamento</h1>
-        <p id="profileTema"></p><br>
-        <p id="profileHora"></p><br>
-        <p id="profileData"></p><br>
-        <p id="profileDescricao"></p><br>
+        <h1>Comprovante de agendamento</h1><br><br>
+        <p id="profileTema"></p>
+        <p id="profileHora"></p>
+        <p id="profileData"></p>
+        <p id="profileDescricao"></p>
     </div>
     <script>
         const tema = localStorage.getItem('tema') || 'Não informado';
         const hora = localStorage.getItem('hora') || 'Não informado';
-        const data = localStorage.getItem('data') || 'Não informado';
+        const dia = localStorage.getItem('dia') || 'Não informado';
+        const mes = localStorage.getItem('mes') || 'Não informado';
+        const ano = localStorage.getItem('ano') || 'Não informado';
         const descricao = localStorage.getItem('descricao') || 'Não informado';
 
         const profileTema = document.getElementById('profileTema');
         const profileHora = document.getElementById('profileHora');
         const profileData = document.getElementById('profileData');
         const profileDescricao = document.getElementById('profileDescricao');
-
+        
         profileTema.textContent = `Tema: ${tema}`;
         profileHora.textContent = `Hora: ${hora}`;
-        profileData.textContent = `Data: ${data}`;
+        profileData.textContent = `Data: ${dia}/${mes}/${ano}`;
         profileDescricao.textContent = `Descrição: ${descricao}`;
     </script>
 </body>
