@@ -2,106 +2,168 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
-    <title>Agendamento</title>
-    <style>
-        * {
-          box-sizing: border-box;
-          font-family: Arial, sans-serif;
-        }
-    
-        body {
-          margin: 0;
-          padding: 0;
-          background-color: #f3f3f3;
-        }
-    
-        .container {
-          max-width: 400px;
-          margin: 40px auto;
-          margin-top: 150px;
-          padding: 20px;
-          background-color: #ffffff;
-          border-radius: 10px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-    
-        .container img {
-          max-width: 120px;
-          margin-bottom: 20px;
-        }
-    
-        form {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-        }
-    
-        input,
-        select {
-          padding: 12px;
-          margin-bottom: 15px;
-          border: 1px solid #ccc;
-          border-radius: 6px;
-          font-size: 16px;
-        }
-    
-        button {
-          padding: 12px;
-          background-color: #18a0d6;
-          color: rgb(0, 0, 0);
-          border: none;
-          border-radius: 6px;
-          font-size: 16px;
-          cursor: pointer;
-          transition: background-color 0.2s ease;
-        }
-    
-        button:hover {
-          background-color: #14cae2;
-        }
-    
-        @media (max-width: 480px) {
-          .container {
-            margin: 20px;
-            margin-top: 150px;
-            padding: 15px;
-          }
-    
-          input,
-          select,
-          button {
-            font-size: 14px;
-          }
-        }
-      </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+  <title>Agendamento</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f3f3f3;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 40px auto;
+      margin-top: 150px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container img {
+      max-width: 120px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    input,
+    select {
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #18a0d6;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #14cae2;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        margin: 20px;
+        margin-top: 150px;
+        padding: 15px;
+      }
+
+      input,
+      select,
+      button {
+        font-size: 14px;
+      }
+    }
+
+    .alert-modal {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 120px;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+    }
+
+    .alert-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .close-btn {
+      color: #ffffff;
+      background-color: rgb(209, 28, 28);
+      height: 40px;
+      width: 40px;
+      padding: 5px;
+      border-radius: 5px;
+      float: right;
+      font-size: 29px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      color: #fdfdfd;
+      background-color: rgb(207, 53, 53);
+      text-decoration: none;
+    }
+
+    #alertMessage {
+      font-size: 18px;
+      margin: 20px 0;
+      color: #000;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
-        <img src="img/logo.png" alt="Logo">
-        <form id="form-agendamento">
-            <input type="text" id="nome" placeholder="Seu nome" />
-
-            <input type="date" id="data" placeholder="Data do agendamento" />
-
-            <select id="linguagem">
-                <option value="">Selecione uma linguagem</option>
-                <option value="Python">Python</option>
-                <option value="Java">Java</option>
-                <option value="C">C</option>
-                <option value="JavaScript">JavaScript</option>
-            </select>
-
-            <button type="submit">Agendar</button>
-        </form>
+  <div id="customAlert" class="alert-modal">
+    <div class="alert-content">
+      <span id="closeAlertBtnErro" class="close-btn">&times;</span>
+      <p id="alertMessageErro">Ops!<br>Preencha todos os campos.</p>
     </div>
-    <script src="script.js"></script>
+  </div>
+
+  <div id="customAlert1" class="alert-modal">
+    <div class="alert-content">
+      <span id="closeAlertBtnSucesso" class="close-btn">&times;</span>
+      <p id="alertMessageSucesso">Sucesso!<br>Agendamento feito com sucesso</p>
+    </div>
+  </div>
+  <div class="container">
+    <img src="img/logo.png" alt="Logo">
+    <form id="form-agendamento">
+      <input type="text" id="nome" placeholder="Seu nome" />
+
+      <input type="date" id="data" placeholder="Data do agendamento" />
+
+      <select id="linguagem">
+        <option value="">Selecione uma linguagem</option>
+        <option value="Python">Python</option>
+        <option value="Java">Java</option>
+        <option value="C">C</option>
+        <option value="JavaScript">JavaScript</option>
+      </select>
+
+      <button type="submit" id="showAlertBtn">Agendar</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
 </body>
 
 </html>
